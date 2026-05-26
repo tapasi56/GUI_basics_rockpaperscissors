@@ -26,49 +26,49 @@ def tie():
     computer_score_label.config(text= "Computer Score : " + str(computer_score))
     player_score_label.config(text = "Player Score : " +str(player_score))
 
+def player_choice(player_input):
+    global player_score, computer_score
+    print(player_input)
+
+    computer_input = get_computer_choice()
+    print(computer_input)
+    player_choice_label.config(text= "You Selected : " + player_input[0])
+    computer_choice_label.config(text= "Computer Selected : " + computer_input[0])
+    
+    if (player_input == computer_input):
+        tie()
+
+    #if the player has chosen rock
+    if(player_input[1] == 0):
+        if(computer_input[1] == 1):
+            #this means computer wins
+            computer_wins()
+        elif (computer_input [1] == 2):
+            #this means player wins
+            player_wins()        
+
+    #if the player has chosen paper
+    elif(player_input[1] == 1):
+        if (computer_input[1] == 0):
+            #this means player wins
+            player_wins()
+        elif(computer_input[1] == 2):
+            #this means computer wins
+            computer_wins()   
+
+    #if the player has scissors
+    elif(player_input[1] == 2):
+        if(computer_input[1] == 0):
+            #this means computer won
+            computer_wins()
+        elif (computer_input [1] == 1):
+            #this means player wins
+            player_wins()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Function to randomly select Computer choice
+def get_computer_choice():
+    return random.choice(options)
 
 game_window = Tk()
 game_window.title(" Rock Paper Scissors Game")
